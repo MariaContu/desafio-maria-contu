@@ -9,8 +9,21 @@ class test {
             console.log(it.descricao)
         });
     }
+
+    testarFormas(forma) {
+        if(Object.values(FormasPagamento).includes(forma)){
+            console.log(`Forma de pagamento escolhida: ${forma}`);
+        } else {
+            console.log(`Forma de pagamento "${forma}" não está disponível.`);
+        }
+    }
     
 }
 
 const testInstance = new test();
 testInstance.mostraItens(); // Chamar o método imprimirItens
+
+testInstance.testarFormas("debito");
+testInstance.testarFormas("credito");
+testInstance.testarFormas("dinheiro");
+testInstance.testarFormas("cheque"); // Exemplo de forma não disponível
