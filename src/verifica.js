@@ -14,7 +14,7 @@ class Verifica  {   //classe criada para facilitar e diminuir codigo fonte princ
     }
 
     //verifica se o codigo fornecido existe na lista de produtos, exemplo: [pizza,1]
-    static isItemExistente(codigo,todosItens=[])   {
+    static isItemExistente(codItem,todosItens=[])   {
         //se o item nao estiver na lista de itens, retorna false, do contrario indica true
         const todosItens = Item.itensCardapio();
         console.log(todosItens.some(item=>item.codigo == codItem));
@@ -23,7 +23,7 @@ class Verifica  {   //classe criada para facilitar e diminuir codigo fonte princ
 
     //verifica se foi inserido um item com quantidade 0, por exemplo: [cafe,0]
     static isQuantidadeZero(item="") {
-        const[,quant] = item.split(',');    //verifica se quantidade é 0, se for retorna true, do contrario retorna false
+        const[,quant] = item.split(',');    //verifica se quantidade é 0, se for 0 retorna true, do contrario retorna false
         return quant == 0;
     }
 
@@ -33,7 +33,21 @@ class Verifica  {   //classe criada para facilitar e diminuir codigo fonte princ
     }
 
     //verifica se o item extra existe junto do principal, caso contrario será informado que a venda é invalida
-    static isApenasExtra    ()  {}
+    static isApenasExtra    (todosItens=[])  {
+        const itensCodigos = todosItens.map(item => item.split(',')[0]);    //divide a lista de itens criando uma lista apenas com os codigos
+
+        const hasCafe = itensCodigos.includes('cafe');  //true se houver cafe
+        const hasSanduiche = itensCodigos.includes('sanduiche'); //true se houver sanduiche
+
+        if(itensCodigos.includes('chantily') && !hasCafe)    {  //verifica a existencia simultanea de cafe e chantily
+            return false;
+        }
+        if(itensCodigos.includes('queijo') && !hasSanduiche)    { //verifica existencia simultanea de queijo e sanduiche
+            return false;
+        }
+
+        return true;
+    }
     
 }
 

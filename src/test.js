@@ -30,6 +30,23 @@ class test {
         console.log(item.includes(','));
     }
 
+    testaIsApenasExtra    (todosItens=[])  {
+        const itensCodigos = todosItens.map(item => item.split(',')[0]);
+
+        const hasCafe = itensCodigos.includes('cafe');
+        const hasSanduiche = itensCodigos.includes('sanduiche');
+
+        if(itensCodigos.includes('chantily') && !hasCafe)    {
+            console.log(false)
+            return false;
+        }
+        if(itensCodigos.includes('queijo') && !hasSanduiche)    {
+            console.log(false)
+            return false;
+        }
+        console.log(true)
+        return true;
+    }
 }
 
 const testInstance = new test();
@@ -46,5 +63,10 @@ const testInstance = new test();
 //testInstance.testaQuantZero('cafe,1');
 //testInstance.testaQuantZero('cafe,0');
 
-testInstance.testaApenasQuantidade("1");
-testInstance.testaApenasQuantidade("cafe,1");
+//testInstance.testaApenasQuantidade("1");
+//testInstance.testaApenasQuantidade("cafe,1");
+
+testInstance.testaIsApenasExtra(['cafe,1', 'queijo,1'])
+testInstance.testaIsApenasExtra(['cafe,1', 'sanduiche,1','chantily,1'])
+testInstance.testaIsApenasExtra(['cafe,1','sanduiche,1', 'queijo,1'])
+testInstance.testaIsApenasExtra(['queijo,1'])
