@@ -1,5 +1,5 @@
-import { FormasPagamento } from "./Models/formasPagamento.js"; //importa metodos de pagamento
-import { Item } from "./Models/item.js";
+import { FormasPagamento } from "../Models/formasPagamento.js"; //importa metodos de pagamento
+import { Item } from "../Models/item.js";
 
 class Verifica  {   //classe criada para facilitar e diminuir codigo fonte principal. Essa classe realiza as verificacoes necessarias durante os testes
 

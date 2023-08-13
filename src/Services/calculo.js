@@ -1,4 +1,4 @@
-import { Item } from "./Models/item";
+import { Item } from "../Models/item";
 import { Verifica } from "./verifica";
 
 

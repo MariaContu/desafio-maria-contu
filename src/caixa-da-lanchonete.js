@@ -1,4 +1,4 @@
-import { Calculo } from "./calculo.js";
+import { Calculo } from "./Services/calculo.js";
 
 class CaixaDaLanchonete {
 
