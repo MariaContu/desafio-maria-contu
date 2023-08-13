@@ -28,10 +28,6 @@ class Item  {
         return this._codigo
     }
 
-    //get descricao() {
-    //   return this._descricao
-    //}
-
     get valor() {
         return this._valor
     }

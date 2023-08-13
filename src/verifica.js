@@ -10,7 +10,7 @@ class Verifica  {   //classe criada para facilitar e diminuir codigo fonte princ
 
     //verifica se o carrinho esta vazio, []
     static isCarrinhoVazio(itens=[]) {
-        return itens.length == 0; //se o carrinho estiver vazio, retorna true, se tiver itens dentro retorna false
+        return itens.length === 0; //se o carrinho estiver vazio, retorna true, se tiver itens dentro retorna false
     }
 
     //verifica se o codigo fornecido existe na lista de produtos, exemplo: [pizza,1]
