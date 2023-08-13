@@ -14,21 +14,21 @@ class Verifica  {   //classe criada para facilitar e diminuir codigo fonte princ
     }
 
     //verifica se o codigo fornecido existe na lista de produtos, exemplo: [pizza,1]
-    static isItemExistente(codItem,todosItens=[])   {
+    static isItemExistente(codItem)   {
         //se o item nao estiver na lista de itens, retorna false, do contrario indica true
         const todosItens = Item.itensCardapio();
         console.log(todosItens.some(item=>item.codigo == codItem));
         return todosItens.some(item=>item.codigo == codItem);
     }
 
-    //verifica se foi inserido um item com quantidade 0, por exemplo: [cafe,0]
-    static isQuantidadeZero(item="") {
-        const[,quant] = item.split(',');    //verifica se quantidade é 0, se for 0 retorna true, do contrario retorna false
-        return quant == 0;
+    //verifica se foi inserido um item com quantidade 0
+    static isQuantidadeInvalida(quantidade) {
+        const quant = parseInt(quantidade);
+        return quant <= 0;
     }
 
     //verifica se foi fornecida apenas a quantidade, sem um código existente
-    static isApenasQuantidade(item="")    {     //se tiver , vai retornar true, ou seja não é apenas a quantidade, do contrario retorna false
+    static isApenasQuantidadeOuCodigo(item="")    {     //se tiver , vai retornar true, ou seja não é apenas a quantidade, do contrario retorna false
         return item.includes(',');
     }
 

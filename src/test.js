@@ -22,7 +22,7 @@ class test {
 
     testaQuantZero(item="")    {
         const[,quant] = item.split(',');
-        console.log(quant==0)
+        console.log(quant<=0)
         //return quant == 0;
     }
 
@@ -60,13 +60,13 @@ const testInstance = new test();
 //testInstance.testaIsItemExistente('cafe');
 //testInstance.testaIsItemExistente('pizza');
 
-//testInstance.testaQuantZero('cafe,1');
-//testInstance.testaQuantZero('cafe,0');
+testInstance.testaQuantZero('cafe,1');
+testInstance.testaQuantZero('cafe,0');
 
 //testInstance.testaApenasQuantidade("1");
 //testInstance.testaApenasQuantidade("cafe,1");
 
-testInstance.testaIsApenasExtra(['cafe,1', 'queijo,1'])
-testInstance.testaIsApenasExtra(['cafe,1', 'sanduiche,1','chantily,1'])
-testInstance.testaIsApenasExtra(['cafe,1','sanduiche,1', 'queijo,1'])
-testInstance.testaIsApenasExtra(['queijo,1'])
+//testInstance.testaIsApenasExtra(['cafe,1', 'queijo,1'])
+//testInstance.testaIsApenasExtra(['cafe,1', 'sanduiche,1','chantily,1'])
+//testInstance.testaIsApenasExtra(['cafe,1','sanduiche,1', 'queijo,1'])
+//testInstance.testaIsApenasExtra(['queijo,1'])
