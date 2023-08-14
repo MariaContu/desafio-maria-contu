@@ -1,5 +1,5 @@
-import { Item } from "../Models/item";
-import { Verifica } from "./verifica";
+import { Item } from "../Models/item.js";
+import { Verifica } from "../Services/verifica.js";
 
 
 class Calculo {
@@ -25,12 +25,13 @@ class Calculo {
         for(const i of itens)   {
 
             //verifica se existe apenas a quantidade ou apenas o codigo
-            if (!Verifica.isApenasQuantidadeOuCodigo(i)) { //se nao tiver , retorna false
+            if (!Verifica.isApenasQuantidadeOuCodigo(i)) { //se nao tiver "," retorna false
                 return "Item inválido!"
             }
 
             const [codigoI,quantI] = i.split(',');  //separa codigo e quantidade
 
+            
             if (!Verifica.isItemExistente(codigoI)) { //se o codigoI nao existir em itens, retorna false
                 return "Item inválido!";
             }

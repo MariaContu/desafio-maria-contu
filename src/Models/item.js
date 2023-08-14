@@ -32,6 +32,12 @@ class Item  {
         return this._valor
     }
 
+    static mostraItens()   {
+        const itens = this.itensCardapio();
+        for (const i of itens)    {
+            console.log(i.codigo)
+        }
+    }
 
 }
 
