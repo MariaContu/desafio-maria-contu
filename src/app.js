@@ -12,13 +12,15 @@ function main() {
     console.log("Bem-Vindo(a) à Lanchonete da DB");
     console.log("-------------------------------");
 
-    console.log("Os itens disponiveis no cardapio são: \n");
-    Item.mostraItens();
+    console.log("Os itens disponiveis no cardapio são: ");
+    
+    const listaItens = Item.itensCardapio();
+    for(const i of listaItens)  console.log(i.codigo);    
 
     const itens = [];
 
     function coletarItens() {
-        rl.question("Gostaria de adicionar algum item no seu carrinho? (S/N): ", (resposta) => {
+        rl.question("\nGostaria de adicionar algum item no seu carrinho? (S/N): ", (resposta) => {
             if (resposta.toUpperCase() === 'S') {
                 coletarNovoItem();
             } else {
