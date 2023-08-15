@@ -1,7 +1,8 @@
 /*SEPARAÇÃO DOS 3 COMPONENTES PRINCIPAIS, MENU DE ITENS, CARRINHO E CHECKOUT*/
 
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #38312C;
     background-color:#DBCDAD ;
     margin: 0;
     display: flex;
@@ -42,10 +43,6 @@ body{
 .carrinho h2,
 .carrinho h3    {
     margin-top: 10px;
-}
-
-.espaco {
-    word-spacing: 70px;
 }
 
 .checkout   {
@@ -195,6 +192,29 @@ body{
 
 /*AREA DE APARICAO DE ITENS - CARRINHO*/
 
-#itensAdicionados   {
+.itensCarrinho   {
+    padding: 6px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     z-index: 2;
+    word-spacing: 10px;
+    font-size: 20px;
+}
+
+.itemPreco   {
+    font-weight: bold;
+}
+
+/*AREA DE CHECKOUT*/
+
+.valoresCheckout    {
+    font-size: 25px;
+    text-align: center;
+    align-items: center;
+    z-index: 2;  
+    margin-top: 10%;
 }

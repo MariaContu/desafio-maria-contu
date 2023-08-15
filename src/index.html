@@ -143,22 +143,25 @@
 
         <div class="carrinho">
             <h2>Carrinho</h2>
-            <h3 class="espaco">Item Quant R$</h3>
+            <h3>Item&nbsp;&nbsp; Quant&nbsp;&nbsp; R$</h3>
             <div class="caixaCarrinho">
-                <div id="itensAdicionados">
-                    <!--ITENS ADICIONADOS SERAO INSERIDOS ABAIXO-->
-                    
-
-                </div>
+                <!--CLASSE PARA CRIACAO DA LISTA DE ITENS ADICIONADOS-->
+                <div class="itensCarrinho">
+                    <div id="itensAdicionados">
+                        <!--ITENS ADICIONADOS SERAO INSERIDOS ABAIXO-->
+                    </div>
+                </div>  
             </div>
         </div>
 
         <div class="checkout">
-            <h2>Total</h2> <h3 class="espaco">Quant R$</h3>
+            <h2>Total</h2> <h3>Quant &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; R$</h3>
             <div class="caixaCheckout">
-
-                <!--ESPAÇO QUE ATUALIZA QUANTIDADE DE ITENS E O VALOR TOTAL PREVISTO-->
-
+                <div class="valoresCheckout">
+                    <div id="checkoutAtt">
+                        <!--ESPAÇO QUE ATUALIZA QUANTIDADE DE ITENS E O VALOR TOTAL PREVISTO-->
+                    </div>
+                </div>
             </div>
             <button class="botaoFinalizar" onclick="finalizaCompra()">
                 <div class="fundoFinalizar">
@@ -167,88 +170,92 @@
             </button>
         </div>
 
+        
         <script>
-            class ItemAdicionado    {
-                constructor(codigo,quantidade) {
+            class ItemAdicionado {
+                constructor(codigo, quantidade) {
                     this._codigo = codigo;
-                    this._quantidade=quantidade;
+                    this._quantidade = quantidade;
                 }
-                get codigo()    {
-                    return _codigo
+                get codigo() {
+                    return this._codigo; // Corrigido: Adicione o "this"
                 }
-                get quantidade()    {
-                    return _quantidade;
+                get quantidade() {
+                    return this._quantidade; // Corrigido: Adicione o "this"
                 }
-                set quantidade(newQuant)    {
-                    quantidade=newQuant;
+                set quantidade(newQuant) {
+                    this._quantidade = newQuant; // Corrigido: Adicione o "this"
                 }
             }
-    
-        </script>
-
-        <script type="module">
-            import {CaixaDaLanchonete} from "./caixa-da-lanchonete.js";
-            import {Item} from "./Models/item.js";
-
-            const c = new CaixaDaLanchonete();
-            let carrinho=[];
-
+        
             const itensPresentesNoCardapio = {
-                cafe: 3.00,
-                chantily: 1.50,
-                suco: 6.20,
-                sanduiche:6.50,
-                queijo:2.00,
-                salgado:7.25,
-                combo1:9.50,
-                combo2:7.50
+                cafe: {valor:3.00},
+                chantily: {valor:1.50},
+                suco: {valor:6.20},
+                sanduiche:{valor:6.50},
+                queijo:{valor:2.00},
+                salgado:{valor:7.25},
+                combo1:{valor:9.50},
+                combo2:{valor:7.50}
             };
-
-            const carrinhoFinal=[];
-
-            //funcao de adicionar itens ao carrinho
+        
+            const carrinho = [];
+        
             function adicionaItem(item) {
-
-                //primeiro verificamos se o item ja existe
-                const itemJaExistente = carrinho.find(i => i.codigo == item)
-
-                if(itemJaExistente) {
+                const itemJaExistente = carrinho.find(i => i.codigo === item); // Corrigido: Adicione o "this" e o triplo igual
+                if (itemJaExistente) {
                     itemJaExistente.quantidade++;
+                } else {
+                    carrinho.push(new ItemAdicionado(item, 1));
                 }
-                else    {
-                    carrinho.push(new ItemAdicionado(item,1));
-                }
-
                 atualizaCarrinho();
             }
-
+        
             function atualizaCarrinho() {
+                const itensNoCarrinho = document.getElementById('itensAdicionados');
+                itensNoCarrinho.innerHTML = '';
 
-                //adiciona no carrinho 
-                const caixaCarrinho = document.getElementById("itensAdicionados");
-                caixaCarrinho.innerHTML = "";
-        
-                let totalCarrinho = 0;
-        
-                for (const item of carrinho) {
-                    const precoItem = itensPresentesNoCardapio[item.codigo];
-                    totalCarrinho += precoItem * item.quantidade;
-        
-                    const itemHTML = document.createElement("div");
-                    itemHTML.className = "itemCarrinho";
-                    itemHTML.innerHTML = `${item.codigo} ${item.quantidade} R$ ${precoItem.toFixed(2)}`;
-                    caixaCarrinho.appendChild(itemHTML);
-                }
-        
-                //mostra resultado no 
-                const caixaCheckout = document.querySelector(".caixaCheckout");
-                caixaCheckout.innerHTML = `Quant ${carrinho.length} R$ ${totalCarrinho.toFixed(2)}`;
+                //variaveis para atualizar checkout
+                let totalItens = 0;
+                let valorTotal = 0;
+
+                carrinho.forEach(itemAdicionado => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'itensCarrinho';
+                    itemDiv.innerHTML = `
+                        <span> ${itemAdicionado.codigo} ${itemAdicionado.quantidade} 
+                            <span class="itemPreco">R$${(itensPresentesNoCardapio[itemAdicionado.codigo].valor * itemAdicionado.quantidade).toFixed(2).replace('.', ',')}</span>
+                        </span>
+                    `;
+                    itensNoCarrinho.appendChild(itemDiv);
+
+                    //atualiza variaveis do checkout
+                    totalItens+=itemAdicionado.quantidade;
+                    valorTotal+=(itensPresentesNoCardapio[itemAdicionado.codigo].valor * itemAdicionado.quantidade)
+                });
+                atualizaCheckout(totalItens,valorTotal);
             }
 
-            function finalizaCompra()   {
+            function atualizaCheckout(quant, valor) {
+                const valorCheckout = document.getElementById('checkoutAtt');
+                valorCheckout.innerHTML = `
+                    <span>${quant} <span class="itemPreco"> &nbsp;&nbsp;&nbsp;&nbsp; R$${valor.toFixed(2).replace('.', ',')}</span></span>
+                `;
 
-            }    
+                valorCheckout.appendChild(valorCheckout.firstChild);
+
+            }
+        
+        
+            function finalizaCompra() {
+                const metodo = window.prompt("Insira o método de pagamento:", "");
+
+
+                //termina a compra, deve zerar carrinho e checkout
+            }
         </script>
+        
+        <script src="./caixa-da-lanchonete.js" type="module"></script>
 
     </body>
 </html>
