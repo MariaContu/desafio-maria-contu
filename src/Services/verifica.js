@@ -17,7 +17,6 @@ class Verifica  {   //classe criada para facilitar e diminuir codigo fonte princ
     static isItemExistente(codItem)   {
         //se o item nao estiver na lista de itens, retorna false, do contrario indica true
         const todosItens = Item.itensCardapio();
-        console.log(todosItens.some(item=>item.codigo == codItem));
         return todosItens.some(item=>item.codigo == codItem);
     }
 

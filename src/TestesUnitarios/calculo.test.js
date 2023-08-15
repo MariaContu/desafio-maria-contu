@@ -44,7 +44,6 @@ describe('Calculo', () => {
             expect(resultado).toEqual('Quantidade inválida!');
         });
 
-        // Mais testes podem ser adicionados para verificar diferentes cenários
     });
 
     describe('aplicaImpostoOuDesconto', () => {

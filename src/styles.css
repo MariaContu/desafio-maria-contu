@@ -1,0 +1,200 @@
+/*SEPARAÇÃO DOS 3 COMPONENTES PRINCIPAIS, MENU DE ITENS, CARRINHO E CHECKOUT*/
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:#DBCDAD ;
+    margin: 0;
+    display: flex;
+}
+
+.menu   {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 75%; /* Largura da caixa */
+    height: 100%; /* Altura da caixa */
+    background-color: #DBCDAD; /* Cor de fundo da caixa */
+}
+
+.carrinho  {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 25%; /* Largura da caixa */
+    height: 65%; /* Altura da caixa */
+    background-color: #B39C7D; /* Cor de fundo da caixa */
+}
+
+.carrinho h2{
+    text-align: center;
+    color: #5A3723;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 5px;
+}
+
+.carrinho h3{
+    text-align: center;
+    color: #38312C;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 10px;
+}
+
+.carrinho h2,
+.carrinho h3    {
+    margin-top: 10px;
+}
+
+.espaco {
+    word-spacing: 70px;
+}
+
+.checkout   {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    width: 25%; /* Largura da caixa */
+    height: 35%; /* Altura da caixa */
+    background-color: #806854; /* Cor de fundo da caixa */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    justify-content: flex-start;
+}
+
+.checkout h2    { 
+    margin: 0;
+    text-align: center;
+    color: #38312C;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 5px;
+}
+.checkout h3    {
+    text-align: center;
+    color: #38312C;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 10px;
+}
+.checkout h2,
+.checkout h3    {
+    margin-top: 5px;
+}
+
+.caixaCarrinho  {
+    position: absolute;
+    top: 17%;
+    right: 4%;
+    width: 92%; /* largura */
+    height: 80%; /* altura */
+    background-color: #C5AD8E; /* cor */
+    border-radius: 25px;
+    z-index: 1; /* camada 1 */
+}
+
+.caixaCheckout  {
+    position: absolute;
+    top: 30%;
+    right: 4%;
+    width: 92%; 
+    height: 40%; 
+    background-color: #9A7E66; 
+    border-radius: 20px;
+    z-index: 1; 
+}
+
+
+/* BOTAO DE ADICAO DE ITEM */
+.botao {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+}
+
+.fundo {
+    width: 50px;
+    height: 50px;
+    background-color: #8EB5A2; /* Cor de fundo da bola */
+    border-radius: 50%; /* Para criar a forma de bola */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 1s; /* Transição suave ao passar o mouse */
+}
+
+.mais {
+    font-size: 55px;
+    font-weight: bold;
+    color: #4B5F56;
+}
+
+
+/* BOTAO DE FINALZIAR A COMPRA */
+.botaoFinalizar {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+
+    position:absolute;
+    bottom: 6%;
+}
+
+.fundoFinalizar {
+    width: 150px;
+    height: 50px;
+    background-color: #564435; /* Cor de fundo da bola */
+    border-radius: 34px; /* Para criar a forma de bola */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 1s; /* Transição suave ao passar o mouse */
+}
+
+.textoFinalizar {
+    font-size: 25px;
+    font-weight: bold;
+    color: #DBCDAD;
+}
+
+/*ORGANIZAÇÃO DOS ITENS DO MENU*/
+
+.menuDeItens    {
+    justify-content: center;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 70px;
+    padding: 40px;
+    z-index: 1;
+}
+
+.item   {
+    display: flex; /* Usar o flexbox para alinhar os elementos em linha */
+    flex-wrap: wrap;
+    align-items: center; /* Alinhar verticalmente os elementos */
+    gap: 20px; /* Espaçamento entre elementos */
+}
+
+.item .conteudo {
+    flex-grow: 1; /* Ocupa o espaço restante */
+}
+
+.item h3 {
+    margin: 0; /* Remove a margem padrão do h3 */
+}
+
+.itemFoto   {
+    width: 150px;
+    height: 100px;
+    object-fit: cover; /* Isso garante que a imagem mantenha a proporção e preencha o espaço definido */
+    border-radius: 10px; /* Adicione bordas arredondadas, se desejar */
+}
+
+/*AREA DE APARICAO DE ITENS - CARRINHO*/
+
+#itensAdicionados   {
+    z-index: 2;
+}

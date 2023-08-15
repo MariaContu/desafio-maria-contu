@@ -1,1 +1,255 @@
-<!-- Arquivo para a montagem da pagina html referente ao programa principal -->>
+
+
+<!-- Arquivo para a montagem da pagina html referente ao programa principal -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initia-scale=1.0">
+        <title>Lanchonete DB</title>
+        <link rel="stylesheet" href="styles.css">
+
+        <script src="./caixa-da-lanchonete.js" type="module"></script>
+
+
+    </head>
+
+    <body>
+
+        <!--Inicia componentes principais-->
+        <div class="menu">
+            <div class="menuDeItens">
+                <div class="item">
+                    
+                    <img class="itemFoto" src="Assets/cafe.png">
+                
+                    <div class="conteudo">
+                        <h3>Café</h3>
+                        <p>R$ 3,00</p>
+                    </div>
+
+                    <button class="botao" onclick="adicionaItem('cafe')">
+                        <div class="fundo">
+                            <span class="mais">+</span>
+                        </div>
+                    </button>
+                </div>
+    
+                <div class="item">
+                    <img class="itemFoto" src="Assets/chantily_extra.png">
+
+                    <div class="conteudo">                        
+                        <h3>Chantily</h3>
+                        <p>R$ 1,50</p>
+                    </div>
+
+                    <button class="botao" onclick="adicionaItem('chantily')">
+                        <div class="fundo">
+                            <span class="mais">+</span>
+                        </div>
+                    </button>
+                </div>
+                
+                <div class="item">
+                    <img class="itemFoto" src="Assets/sanduiche.png">
+                    
+                    <div class="conteudo">
+                        <h3>Sanduiche</h3>
+                        <p>R$ 6,50</p>
+                    </div>
+
+                    <button class="botao" onclick="adicionaItem('sanduiche')">
+                        <div class="fundo">
+                            <span class="mais">+</span>
+                        </div>
+                    </button>
+                </div>
+                
+                <div class="item">
+                    <img class="itemFoto" src="Assets/queijo_extra.png">
+                    <div class="conteudo">
+                        <h3>Queijo</h3>
+                        <p>R$ 2,00</p>
+                    </div>
+                    <button class="botao" onclick="adicionaItem('queijo')">
+                        <div class="fundo">
+                            <span class="mais">+</span>
+                        </div>
+                    </button>
+                </div>
+    
+                <div class="item">
+                    <img class="itemFoto" src="Assets/salgado.png">
+                    <div class="conteudo">
+                        <h3>Salgado</h3>
+                        <p>R$ 7,25</p>
+                    </div>
+                        <button class="botao" onclick="adicionaItem('salgado')">
+                        <div class="fundo">
+                            <span class="mais">+</span>
+                        </div>
+                    </button>
+                </div>
+                
+                <div class="item">
+                    <img class="itemFoto" src="Assets/suco.png">
+                    <div class="conteudo">
+                        <h3>Suco Natural</h3>
+                        <p>R$ 6,20</p>    
+                    </div>
+                    
+                    <button class="botao" onclick="adicionaItem('suco')">
+                        <div class="fundo">
+                            <span class="mais">+</span>
+                        </div>
+                    </button>
+                </div>
+    
+                <div class="item">
+                    <img class="itemFoto" src="Assets/combo1.png">
+
+                    <div class="conteudo">
+                        <h3>Combo 1</h3>
+                        <h5>1 Suco + 1 Sanduiche</h5>
+                        <p>R$ 9,50</p>
+                    </div>
+                    
+                    <button class="botao" onclick="adicionaItem('combo1')">
+                        <div class="fundo">
+                            <span class="mais">+</span>
+                        </div>
+                    </button>
+                </div>
+                
+                <div class="item">
+                    <img class="itemFoto" src="Assets/combo2.png">
+
+                    <div class="conteudo">
+                        <h3>Combo 2</h3>
+                        <h5>1 Café + 1 Sanduiche</h5>
+                        <p>R$ 7,50</p>    
+                    </div>
+
+                    <button class="botao" onclick="adicionaItem('combo2')">
+                        <div class="fundo">
+                            <span class="mais">+</span>
+                        </div>
+                    </button>
+                </div>
+
+            </div>
+    
+        </div>
+
+        <div class="carrinho">
+            <h2>Carrinho</h2>
+            <h3 class="espaco">Item Quant R$</h3>
+            <div class="caixaCarrinho">
+                <div id="itensAdicionados">
+                    <!--ITENS ADICIONADOS SERAO INSERIDOS ABAIXO-->
+                    
+
+                </div>
+            </div>
+        </div>
+
+        <div class="checkout">
+            <h2>Total</h2> <h3 class="espaco">Quant R$</h3>
+            <div class="caixaCheckout">
+
+                <!--ESPAÇO QUE ATUALIZA QUANTIDADE DE ITENS E O VALOR TOTAL PREVISTO-->
+
+            </div>
+            <button class="botaoFinalizar" onclick="finalizaCompra()">
+                <div class="fundoFinalizar">
+                    <span class="textoFinalizar">Finalizar</span>
+                </div>
+            </button>
+        </div>
+
+        <script>
+            class ItemAdicionado    {
+                constructor(codigo,quantidade) {
+                    this._codigo = codigo;
+                    this._quantidade=quantidade;
+                }
+                get codigo()    {
+                    return _codigo
+                }
+                get quantidade()    {
+                    return _quantidade;
+                }
+                set quantidade(newQuant)    {
+                    quantidade=newQuant;
+                }
+            }
+    
+        </script>
+
+        <script type="module">
+            import {CaixaDaLanchonete} from "./caixa-da-lanchonete.js";
+            import {Item} from "./Models/item.js";
+
+            const c = new CaixaDaLanchonete();
+            let carrinho=[];
+
+            const itensPresentesNoCardapio = {
+                cafe: 3.00,
+                chantily: 1.50,
+                suco: 6.20,
+                sanduiche:6.50,
+                queijo:2.00,
+                salgado:7.25,
+                combo1:9.50,
+                combo2:7.50
+            };
+
+            const carrinhoFinal=[];
+
+            //funcao de adicionar itens ao carrinho
+            function adicionaItem(item) {
+
+                //primeiro verificamos se o item ja existe
+                const itemJaExistente = carrinho.find(i => i.codigo == item)
+
+                if(itemJaExistente) {
+                    itemJaExistente.quantidade++;
+                }
+                else    {
+                    carrinho.push(new ItemAdicionado(item,1));
+                }
+
+                atualizaCarrinho();
+            }
+
+            function atualizaCarrinho() {
+
+                //adiciona no carrinho 
+                const caixaCarrinho = document.getElementById("itensAdicionados");
+                caixaCarrinho.innerHTML = "";
+        
+                let totalCarrinho = 0;
+        
+                for (const item of carrinho) {
+                    const precoItem = itensPresentesNoCardapio[item.codigo];
+                    totalCarrinho += precoItem * item.quantidade;
+        
+                    const itemHTML = document.createElement("div");
+                    itemHTML.className = "itemCarrinho";
+                    itemHTML.innerHTML = `${item.codigo} ${item.quantidade} R$ ${precoItem.toFixed(2)}`;
+                    caixaCarrinho.appendChild(itemHTML);
+                }
+        
+                //mostra resultado no 
+                const caixaCheckout = document.querySelector(".caixaCheckout");
+                caixaCheckout.innerHTML = `Quant ${carrinho.length} R$ ${totalCarrinho.toFixed(2)}`;
+            }
+
+            function finalizaCompra()   {
+
+            }    
+        </script>
+
+    </body>
+</html>
+
