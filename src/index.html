@@ -170,7 +170,9 @@
             </button>
         </div>
 
-        
+    
+        <script src="./caixa-da-lanchonete.js" type="module"></script>
+
         <script>
             class ItemAdicionado {
                 constructor(codigo, quantidade) {
@@ -238,20 +240,39 @@
 
             function atualizaCheckout(quant, valor) {
                 const valorCheckout = document.getElementById('checkoutAtt');
-                valorCheckout.innerHTML = `
-                    <span>${quant} <span class="itemPreco"> &nbsp;&nbsp;&nbsp;&nbsp; R$${valor.toFixed(2).replace('.', ',')}</span></span>
-                `;
-
+                
+                if(quant==0)    {
+                    valorCheckout.innerHTML ='';    //limpa o conteudo
+                }
+                else    {
+                    valorCheckout.innerHTML = `
+                        <span>${quant} <span class="itemPreco"> &nbsp;&nbsp;&nbsp;&nbsp; R$${valor.toFixed(2).replace('.', ',')}</span></span>
+                    `;
+                }
                 valorCheckout.appendChild(valorCheckout.firstChild);
 
             }
-        
+
+            let carrinhoFinal=[];
         
             function finalizaCompra() {
                 const metodo = window.prompt("Insira o método de pagamento:", "");
 
+                carrinho.forEach(i=>    {
+                    const itemParaAdicionar = i.codigo+","+i.quantidade;
+                    carrinhoFinal.push(itemParaAdicionar);
+                })
+
+                //metodo calculaValorTotal para finalizar o procedimento
+                const c = new CaixaDaLanchonete();
+                const valorFinal = c.calcularValorDaCompra(metodo,carrinhoFinal);
+
+                alert(valorFinal);
 
                 //termina a compra, deve zerar carrinho e checkout
+                carrinho.length = 0; // Isso esvazia o array
+                
+                atualizaCarrinho();
             }
         </script>
         

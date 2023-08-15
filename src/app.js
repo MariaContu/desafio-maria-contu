@@ -23,12 +23,17 @@ function main() {
         rl.question("\nGostaria de adicionar algum item no seu carrinho? (S/N): ", (resposta) => {
             if (resposta.toUpperCase() === 'S') {
                 coletarNovoItem();
-            } else {
+            }
+            else if(resposta.toUpperCase() === 'N') {
                 console.log("Itens adicionados ao carrinho:");
                 for (const item of itens) {
                     console.log(item);
                 }
                 coletarMetodoDePagamento(itens);
+            }
+            else    {
+                console.log("Resposta Inválida!")
+                coletarItens();
             }
         });
     }
