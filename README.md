@@ -6,7 +6,7 @@ O programa pode consiste em um caixa de lanchonete. Por meio do terminal ou do a
 
 Dependendo da forma de pagamento, variando entre crédito, debito ou dinheiro, o programa realiza lógicas diferentes podendo aplicar um desconto, caso o método seja dinheiro, e até mesmo aplicando uma taxa de imposto para compras pagas com crédito.
 
-## Como Baixar o Projeto?
+## Como Baixar o Projeto? <a id="comoBaixar"></a>
 
 ### 1. Clonando o Repositório no GITHUB
 
@@ -32,7 +32,7 @@ Dependendo da forma de pagamento, variando entre crédito, debito ou dinheiro, o
 
 ### 1. Pelo Terminal
 
-  1. Para executar o arquivo interativo pelo terminal, primeiramente precisamos que, no prompt, acessemos o local onde o arquivo está armazenado. Para isso pode seguir as mesmas instruções da sessão: **Como Baixar o Projeto?**
+  1. Para executar o arquivo interativo pelo terminal, primeiramente precisamos que, no prompt, acessemos o local onde o arquivo está armazenado. Para isso pode seguir as mesmas instruções da sessão: [**Como Baixar o Projeto?**](#comoBaixar)
 
   2. Dentro do local do arquivo, precisamos enviar o comando `cd src` para adentrar a pasta onde esta o arquivo.
 
