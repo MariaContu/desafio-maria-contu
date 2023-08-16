@@ -1,121 +1,49 @@
-## desafio-maria-contu
-Projeto referente ao desenvolvimento do desafio proposto pela StartDB 2023. Desafio explicado abaixo.
+# Desafio da Lanchonete - DB
+Este é um projeto desenvolvido para resolver o desafio proposto no processo seletivo do programa STARTDB 2023
 
+## Como Funciona?
+O programa pode consiste em um caixa de lanchonete. Por meio do terminal ou do arquivo HTML, o usuario adiciona os itens desejados no seu carrinho e finaliza sua compra, devendo inserir o método de pagamento desejado.
 
-## O DESAFIO
-Olá! Você foi contratado para automatizar o caixa da Lanchonete da DB.
-Sua missão será construir a lógica que calcula o valor de uma compra de acordo com o cardápio, regras e descontos da Lanchonete.
+Dependendo da forma de pagamento, variando entre crédito, debito ou dinheiro, o programa realiza lógicas diferentes podendo aplicar um desconto, caso o método seja dinheiro, e até mesmo aplicando uma taxa de imposto para compras pagas com crédito.
 
-### CARDÁPIO
+## Como Baixar o Projeto?
 
-  | codigo    | descrição                   | valor   |
-  |-----------|-----------------------------|---------|
-  | cafe      | Café                        | R$ 3,00 |
-  | chantily  | Chantily (extra do Café)    | R$ 1,50 |
-  | suco      | Suco Natural                | R$ 6,20 |
-  | sanduiche | Sanduíche                   | R$ 6,50 |
-  | queijo    | Queijo (extra do Sanduíche) | R$ 2,00 |
-  | salgado   | Salgado                     | R$ 7,25 |
-  | combo1    | 1 Suco e 1 Sanduíche        | R$ 9,50 |
-  | combo2    | 1 Café e 1 Sanduíche        | R$ 7,50 |
+### 1. Clonando o Repositório no GITHUB
 
+  1. Na pagina principal do repositório, clique no botão **<> Code**
 
-### FORMAS DE PAGAMENTO
-Atualmente a Lanchonete aceita as seguintes formas de pagamento:
- - dinheiro
- - debito
- - credito
+  2. Copie o link HTTPS: `https://github.com/MariaContu/desafio-maria-contu.git`
 
-O sistema deve receber essa informação como string, utilizando a grafia exatamente igual aos exemplos acima.
+  3. Defina a área que deseja clonar o repositório. **Por exemplo:** Supondo que deseja clonar o repositório na sua área de trabalho, abre o PROMPT DE COMANDO e envie o comando: `cd desktop`
 
-### DESCONTOS E TAXAS
- - Pagamento em dinheiro tem 5% de desconto
- - Pagamento a crédito tem acréscimo de 3% no valor total
+  4. Acessando a área desejada, ainda no prompt de comando, vamos enfim clonar o repositório. De tal modo, envie o seguinte comando: `git clone url-do-repositoria-aqui`
 
-### OUTRAS REGRAS
+### 2. Baixando o arquivo .zip
 
-- Caso item extra seja informado num pedido que não tenha o respectivo item principal, apresentar mensagem "Item extra não pode ser pedido sem o principal".
-- Combos não são considerados como item principal.
-- É possível pedir mais de um item extra sem precisar de mais de um principal.
-- Se não forem pedidos itens, apresentar mensagem "Não há itens no carrinho de compra!"
-- Se a quantidade de itens for zero, apresentar mensagem "Quantidade inválida!".
-- Se o código do item não existir, apresentar mensagem "Item inválido!"
-- Se a forma de pagamento não existir, apresentar mensagem "Forma de pagamento inválida!"
+  1. Para baixar o arquivo em .zip, basta, na página principal do projeto, clicar no botão **<> Code** e acessar a opção _Download ZIP_
 
-### O CÓDIGO
-Você está recebendo uma estrutura básica para desenvolver a lógica do caixa. O arquivo principal está localizado dentro da pasta `src` e se chama `caixa-da-lanchonete.js`. Você pode desenvolver a sua lógica criando outros arquivos, métodos e até mesmo outras classes, porém o resultado deve poder ser obtido através do método `calcularValorDaCompra`.
+  2. Para ter acesso ao projeto, basta extrair o conteudo do arquivo .zip
 
-> ALERTA:
-> É importante que a estrutura básica descrita acima não seja alterada, incluindo nome e parâmetros do método. Iremos validar sua solução através destes, assim como você pode validar através dos cenários de testes já implementados em `src/caixa-da-lanchonete.test.js`.
+## Testando o Código
 
-### INSTALANDO E RODANDO NA SUA MÁQUINA
-1. Instalar o [Node](https://nodejs.org/en/)
-2. Instalar dependencias do projeto com o seguinte comando:
-```bash
-npm install
-```
+- Pelo prompt, na área que o projeto foi clonado, digite: `cd nome-do-repositorio-aqui`. E então para testar, envie `npm test`, para rodar todos os testes.
 
-### VALIDANDO A SOLUÇÃO
-Junto com a estrutura básica você está recebendo alguns cenários de testes para auxiliar na validação da sua solução. Recomendamos que você crie mais casos de teste para aumentar a confiabilidade da sua solução.
-Para testar sua solução com os cenários já criados, basta rodar o seguinte comando:
-```bash
-npm test
-```
+## Executando o Projeto
 
-Para saber mais consulte a [Documentação do Jest](https://jestjs.io/pt-BR/docs/getting-started).
+### 1. Pelo Terminal
 
-### INPUTS
-O método `calcularValorDaCompra` recebe dois parâmetros, `formaDePagamento` e `itens`, sendo o primeiro uma string com os possíveis valores válidos: `debito`, `credito` e `dinheiro`. O segundo parâmetro contém uma array dos itens que serão comprados. Cada item é uma string contendo o código do item e a quantidade do mesmo separados por uma vírgula.
-EXEMPLO:
-```js
-['cafe,1','chantily,1']
-```
+  1. Para executar o arquivo interativo pelo terminal, primeiramente precisamos que, no prompt, acessemos o local onde o arquivo está armazenado. Para isso pode seguir as mesmas instruções da sessão: **Como Baixar o Projeto?**
 
-### OUPUTS
-O retorno do método `calcularValorDaCompra` deve ser sempre uma string e conteúdo dela pode ser ou o valor total da compra ou uma mensagem de erro conforme as regras descritas anteriormente. O valor da compra deve ser formatado com `R$` e decimais separados por vírgula.
+  2. Dentro do local do arquivo, precisamos enviar o comando `cd src` para adentrar a pasta onde esta o arquivo.
 
-Para padronizar a quantidade de decimais, utilize o método `toFixed` do JavaScript. Esse método serve o propósito deste desafio, porém na vida real a regra de arredondamento deve ser conferida! Para saber mais consulte a [Documentação do Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed).
-EXEMPLO:
-```js
-// exemplo de saída do valor da compra
-"R$ 6,00"
+  3. Por fim, enviamos o comando `node app`, que executará o programa pelo terminal!
 
-// exemplo de saída de erro
-"Forma de pagamento inválida!"
-```
+### 2. Como HTML
 
-### EXEMPLOS
+  1. Para executar o arquivo em seu formato .html primeiramente abra a pasta do arquivo
 
-EXEMPLO 1: Compra de chantily sem café.
-```js
-new CaixaDaLanchonete()
-  .calcularValorDaCompra('debito', ['chantily,1']);
-```
-O resultado esperado deve ser:
-```
-"Item extra não pode ser pedido sem o principal"
-```
+  2. Dentro da pasta `src` abra o arquivo `index`
 
-<br/>
+  3. O arquivo será aberto no seu navegador padrão!
 
-EXEMPLO 2: Compra de café com chantily.
-```js
-new CaixaDaLanchonete()
-  .calcularValorDaCompra('debito', ['cafe,1','chantily,1']);
-```
-O resultado esperado deve ser:
-```
-"R$ 4,50"
-```
-
-<br/>
-
-EXEMPLO 3: Compra de combo e dois cafés
-```js
-new CaixaDaLanchonete()
-  .calcularValorDaCompra('credito', ['combo1,1','cafe,2']);
-```
-O resultado esperado deve ser:
-```
-"R$ 15,96"
-```
+Projeto feito por [Maria Eduarda Santana Contu](https://github.com/MariaContu)
