@@ -9,9 +9,6 @@
         <title>Lanchonete DB</title>
         <link rel="stylesheet" href="styles.css">
 
-        <script src="./caixa-da-lanchonete.js" type="module"></script>
-
-
     </head>
 
     <body>
@@ -170,9 +167,6 @@
             </button>
         </div>
 
-    
-        <script src="./caixa-da-lanchonete.js" type="module"></script>
-
         <script>
             class ItemAdicionado {
                 constructor(codigo, quantidade) {
@@ -202,6 +196,7 @@
             };
         
             const carrinho = [];
+            let valorFinal=0
         
             function adicionaItem(item) {
                 const itemJaExistente = carrinho.find(i => i.codigo === item); // Corrigido: Adicione o "this" e o triplo igual
@@ -250,33 +245,59 @@
                     `;
                 }
                 valorCheckout.appendChild(valorCheckout.firstChild);
-
+                valorFinal=valor;
             }
 
-            let carrinhoFinal=[];
-        
-            function finalizaCompra() {
-                const metodo = window.prompt("Insira o método de pagamento:", "");
+            function finalizaCompra()   {
+                const metodo = window.prompt("Insira uma forma de pagamento: ","");
+                
+                if (metodo !== 'debito' && metodo !== 'credito' && metodo !== 'dinheiro') {
+                    alert("Forma de pagamento inválida!")
+                    return;
+                }
+                if (carrinho.length==0) {
+                    alert("O Carrinho de compras está vazio!");
+                    return;
+                }
 
-                carrinho.forEach(i=>    {
-                    const itemParaAdicionar = i.codigo+","+i.quantidade;
-                    carrinhoFinal.push(itemParaAdicionar);
-                })
+                //verifica extra sem principal
+                if(!isApenasExtra(carrinho))   {
+                    alert("Item extra não pode ser vendido sem o principal!");
+                    return;
+                }
 
-                //metodo calculaValorTotal para finalizar o procedimento
-                const c = new CaixaDaLanchonete();
-                const valorFinal = c.calcularValorDaCompra(metodo,carrinhoFinal);
+                //calcular valor final
+                if(metodo=='credito')   {
+                    valorFinal*=1.03;
+                }
+                else if(metodo=='dinheiro')   {
+                    valorFinal*=0.95;
+                }
+                else    {
+                    valorFinal*=1;
+                }
 
-                alert(valorFinal);
+                alert("Compra final de R$"+valorFinal.toFixed(2).replace('.',',')+" finalizada com sucesso!")
 
                 //termina a compra, deve zerar carrinho e checkout
                 carrinho.length = 0; // Isso esvazia o array
-                
                 atualizaCarrinho();
+
             }
+
+            function isApenasExtra(listaItens=[])    {
+                const itensCodigos = listaItens.map(item => item.codigo);
+
+                if (itensCodigos.includes('chantily') && !itensCodigos.includes('cafe')) {
+                    return false;
+                }
+                if (itensCodigos.includes('queijo') && !itensCodigos.includes('sanduiche')) {
+                    return false;
+                }
+                return true;
+            }
+
         </script>
-        
-        <script src="./caixa-da-lanchonete.js" type="module"></script>
 
     </body>
 </html>
