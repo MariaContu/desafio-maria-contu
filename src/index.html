@@ -222,6 +222,7 @@
                     itemDiv.innerHTML = `
                         <span> ${itemAdicionado.codigo} ${itemAdicionado.quantidade} 
                             <span class="itemPreco">R$${(itensPresentesNoCardapio[itemAdicionado.codigo].valor * itemAdicionado.quantidade).toFixed(2).replace('.', ',')}</span>
+                            <button class="removeItem" onclick="removerItem('${itemAdicionado.codigo}')">X</button>
                         </span>
                     `;
                     itensNoCarrinho.appendChild(itemDiv);
@@ -296,6 +297,17 @@
                 }
                 return true;
             }
+
+                function removerItem(itemCodigo) {
+                    const itemIndex = carrinho.findIndex(i=>i.codigo==itemCodigo);
+
+                    carrinho[itemIndex].quantidade--;
+                
+                    if (carrinho[itemIndex].quantidade <= 0) {
+                        carrinho.splice(itemIndex, 1);
+                    }
+                    atualizaCarrinho();
+                }
 
         </script>
 

@@ -9,7 +9,7 @@ body{
 }
 
 .menu   {
-    position: fixed;
+    position: absolute;
     top: 0px;
     left: 0px;
     width: 75%; /* Largura da caixa */
@@ -64,7 +64,6 @@ body{
     text-align: center;
     color: #38312C;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    margin-bottom: 5px;
 }
 .checkout h3    {
     text-align: center;
@@ -74,7 +73,7 @@ body{
 }
 .checkout h2,
 .checkout h3    {
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .caixaCarrinho  {
@@ -90,10 +89,10 @@ body{
 
 .caixaCheckout  {
     position: absolute;
-    top: 30%;
+    top: 35%;
     right: 4%;
     width: 92%; 
-    height: 40%; 
+    height: 30%; 
     background-color: #9A7E66; 
     border-radius: 20px;
     z-index: 1; 
@@ -112,18 +111,22 @@ body{
 .fundo {
     width: 50px;
     height: 50px;
-    background-color: #8EB5A2; /* Cor de fundo da bola */
-    border-radius: 50%; /* Para criar a forma de bola */
+    background-color: #8EB5A2;
+    border-radius: 50%; 
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 1s; /* Transição suave ao passar o mouse */
+    transition: background-color 0.5s; 
 }
 
 .mais {
     font-size: 55px;
     font-weight: bold;
     color: #4B5F56;
+}
+
+.fundo:hover {  /*escurece o botao ao mouse ficar em cima*/
+    background-color: #6E977F; 
 }
 
 
@@ -142,18 +145,22 @@ body{
 .fundoFinalizar {
     width: 150px;
     height: 50px;
-    background-color: #564435; /* Cor de fundo da bola */
-    border-radius: 34px; /* Para criar a forma de bola */
+    background-color: #564435;
+    border-radius: 34px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 1s; /* Transição suave ao passar o mouse */
+    transition: background-color 0.5s;
 }
 
 .textoFinalizar {
     font-size: 25px;
     font-weight: bold;
     color: #DBCDAD;
+}
+
+.fundoFinalizar:hover {  /*escurece o botao ao mouse ficar em cima*/
+    background-color: #3E3327; 
 }
 
 /*ORGANIZAÇÃO DOS ITENS DO MENU*/
@@ -184,8 +191,8 @@ body{
 }
 
 .itemFoto   {
-    width: 150px;
-    height: 100px;
+    width: 200px;
+    height: 150px;
     object-fit: cover; /* Isso garante que a imagem mantenha a proporção e preencha o espaço definido */
     border-radius: 10px; /* Adicione bordas arredondadas, se desejar */
 }
@@ -209,6 +216,22 @@ body{
     font-weight: bold;
 }
 
+.removeItem {   /*botao para remover item*/
+    border: none;
+    width: 20px;
+    height: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transform: color 0.5s;
+    color: darkred;
+    background-color: transparent;
+}
+
+.removeItem:hover   {
+    color: red;
+}
+
 /*AREA DE CHECKOUT*/
 
 .valoresCheckout    {
@@ -216,5 +239,5 @@ body{
     text-align: center;
     align-items: center;
     z-index: 2;  
-    margin-top: 10%;
+    margin-top: 7%;
 }
