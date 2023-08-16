@@ -176,14 +176,15 @@ body{
 }
 
 .item   {
-    display: flex; /* Usar o flexbox para alinhar os elementos em linha */
-    flex-wrap: wrap;
-    align-items: center; /* Alinhar verticalmente os elementos */
-    gap: 20px; /* Espaçamento entre elementos */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10% /*distancia da img para o nome*/;
 }
 
-.item .conteudo {
-    flex-grow: 1; /* Ocupa o espaço restante */
+.conteudo {
+    flex-grow: 1; 
+    
 }
 
 .item h3 {
@@ -191,8 +192,9 @@ body{
 }
 
 .itemFoto   {
-    width: 200px;
-    height: 150px;
+    width: 50%;
+    height: auto;
+    max-width: 100%;
     object-fit: cover; /* Isso garante que a imagem mantenha a proporção e preencha o espaço definido */
     border-radius: 10px; /* Adicione bordas arredondadas, se desejar */
 }
